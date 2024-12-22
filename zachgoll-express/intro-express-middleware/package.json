@@ -6,10 +6,12 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon",
+    "build": "tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "1.0.0",
   "devDependencies": {
+    "@tsconfig/node-lts": "^22.0.1",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
     "nodemon": "^3.1.9",

@@ -9,7 +9,7 @@ function add(a: number, b: number) {
 
 app.get("/", (req, res, next) => {
   res.status(200).send("<h1>hello</h1>");
-  console.log(add(3, 3));
+  console.log(add(5, 3));
 });
 
 app.listen(port, () => {
