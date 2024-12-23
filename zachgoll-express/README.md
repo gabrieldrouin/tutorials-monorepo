@@ -12,6 +12,7 @@ Source: https://www.youtube.com/watch?v=F-sFp_AvHc8
 - How To Use TypeScript With Express & Node: https://www.youtube.com/watch?v=qy8PxD3alWw
 - (3 part series) Typescript API in NodeJS / Express in Depth: https://www.youtube.com/watch?v=NYZKUTGC51g
 - **Best explanation as to why tsx is used** - The End of ts-node? Here’s What You Need to Know : https://www.youtube.com/watch?v=-7dNs1ggKRs
+- **Good explanation as well** - The 7 Best TypeScript Runners Compared : https://www.youtube.com/watch?v=HoLplh-dUgk
 
 ## notes
 

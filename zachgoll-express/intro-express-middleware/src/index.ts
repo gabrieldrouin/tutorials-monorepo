@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction, ErrorRequestHandler } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,6 +10,11 @@ function add(a: number, b: number) {
   return a + b;
 }
 
+function general(req: Request, res: Response, next: NextFunction) {
+  console.log("general");
+  next();
+}
+
 function mid1(req: Request, res: Response, next: NextFunction) {
   console.log("mid1, first");
   next();
@@ -19,8 +24,10 @@ function mid1(req: Request, res: Response, next: NextFunction) {
 
 function mid2(req: Request, res: Response, next: NextFunction) {
   console.log("mid2");
-  res.status(200).send("<h1>hello</h1>");
-  //next();
+  const error = new Error("I am an error!");
+  if (!error) next(error);
+  else next();
+  //res.status(200).send("<h1>hello</h1>");
 }
 
 function mid3(req: Request, res: Response, next: NextFunction) {
@@ -30,13 +37,22 @@ function mid3(req: Request, res: Response, next: NextFunction) {
 
 function mid4(req: Request, res: Response, next: NextFunction) {
   console.log("mid4");
-  const error = new Error("I am an error");
-  next(error);
+  res.status(200).send("<h1>all good</h1>");
+  //next();
 }
 
-function errHandler(err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) {
-  console.error(`Error: ${err}`);
+function midlast(req: Request, res: Response, next: NextFunction) {
+  console.log("midlast");
 }
+
+function errHandler(err: Error, req: Request, res: Response, next: NextFunction) {
+  if (err) {
+    res.send(`<h1>${err}</h1>`);
+    console.error(`Console error: ${err}`);
+  }
+}
+
+app.use(general);
 
 app.get(
   "/",
@@ -47,8 +63,11 @@ app.get(
   },
   mid2,
   mid3,
-  mid4
+  mid4,
+  midlast
 );
+
+app.use(errHandler);
 
 app.listen(port, () => {
   console.log(`Running on port ${port}`);
