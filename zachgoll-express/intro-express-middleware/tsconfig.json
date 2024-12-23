@@ -5,3 +5,9 @@
   },
   "include": ["src/**/*"]
 }
+
+// Note: "exclude": ["node_modules", "dist"] isn't required because "exclude" only changes which files are included as a result of the include setting.
+// See: https://www.typescriptlang.org/tsconfig/#exclude
+
+// Note: "rootDir": ["./src"] isn't required because the inferred value for rootDir is the longest common path of all non-declaration input files, which in this case is src/.
+// See: https://www.typescriptlang.org/tsconfig/#rootDir

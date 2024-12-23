@@ -6,8 +6,8 @@
   "name": "intro-express-middleware",
   "type": "module",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "start": "tsc --noEmit && tsx src/index.ts",
+    "dev": "tsx --watch src/index.ts",
+    "start": "tsc --noEmit && npm run dev",
     "build": "tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
