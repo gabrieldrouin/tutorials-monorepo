@@ -6,9 +6,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT ?? "3000";
 
-function add(a: number, b: number) {
+const add = (a: number, b: number) => {
   return a + b;
-}
+};
 
 const general: RequestHandler = (_req, _res, next) => {
   console.log("general");
