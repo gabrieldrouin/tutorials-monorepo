@@ -1,63 +1,60 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { RequestHandler, ErrorRequestHandler } from "express";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT ?? "3000";
 
 function add(a: number, b: number) {
   return a + b;
 }
 
-function general(req: Request, res: Response, next: NextFunction) {
+const general: RequestHandler = (_req, _res, next) => {
   console.log("general");
   next();
-}
+};
 
-function mid1(req: Request, res: Response, next: NextFunction) {
+const mid1: RequestHandler = (_req, _res, next) => {
   console.log("mid1, first");
   next();
   console.log("mid1, second");
   next();
-}
+};
 
-function mid2(req: Request, res: Response, next: NextFunction) {
+const mid2: RequestHandler = (_req, _res, next) => {
   console.log("mid2");
   const error = new Error("I am an error!");
-  if (!error) next(error);
-  else next();
+  next(error);
   //res.status(200).send("<h1>hello</h1>");
-}
+};
 
-function mid3(req: Request, res: Response, next: NextFunction) {
+const mid3: RequestHandler = (_req, _res, next) => {
   console.log("mid3");
   next();
-}
+};
 
-function mid4(req: Request, res: Response, next: NextFunction) {
+const mid4: RequestHandler = (_req, res, _next) => {
   console.log("mid4");
   res.status(200).send("<h1>all good</h1>");
   //next();
-}
+};
 
-function midlast(req: Request, res: Response, next: NextFunction) {
+const midlast: RequestHandler = (_req, _res, _next) => {
   console.log("midlast");
-}
+};
 
-function errHandler(err: Error, req: Request, res: Response, next: NextFunction) {
-  if (err) {
-    res.send(`<h1>${err}</h1>`);
-    console.error(`Console error: ${err}`);
-  }
-}
+const errHandler: ErrorRequestHandler = (err: Error, _req, res, _next) => {
+  res.send(`<h1>${err}</h1>`);
+  console.error(`Console error: ${err}`);
+};
 
 app.use(general);
 
 app.get(
   "/",
   mid1,
-  (req, res, next) => {
+  (_req, _res, next) => {
     console.log(add(5, 5));
     next();
   },
