@@ -14,7 +14,7 @@ Source: https://www.youtube.com/watch?v=F-sFp_AvHc8
 - **Best explanation as to why tsx is used** - The End of ts-node? Here’s What You Need to Know : https://www.youtube.com/watch?v=-7dNs1ggKRs
 - **Good explanation as well** - The 7 Best TypeScript Runners Compared : https://www.youtube.com/watch?v=HoLplh-dUgk
 
-## notes
+## notes on typescript
 
 - tsx is a typescript _runner_, which means it doesn't do type-checking.
   As such, `package.json` scripts are defined as:
@@ -33,4 +33,17 @@ Source: https://www.youtube.com/watch?v=F-sFp_AvHc8
 
 - ts-runtime-comparison: https://github.com/privatenumber/ts-runtime-comparison?tab=readme-ov-file
 
--
+## todo: creation steps of the project
+
+A semi-accurate representation of how I'd build this default config, step by step. Should make a cleaner version at some point.
+
+- gh repo create
+- .gitignore
+- npm init -y
+- node --version > .nvmrc
+- install node + types
+- install typescript + config + tsx + types + package.json scripts
+- install express + types
+- install dotenv + .env
+- install prettier + .vscode/settings.json
+- install eslint (npm i eslint -D && npm init @eslint/config)

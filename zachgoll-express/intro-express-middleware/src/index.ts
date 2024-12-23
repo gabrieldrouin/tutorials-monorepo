@@ -64,7 +64,7 @@ app.get(
   mid2,
   mid3,
   mid4,
-  midlast
+  midlast,
 );
 
 app.use(errHandler);
