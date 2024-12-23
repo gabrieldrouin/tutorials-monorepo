@@ -7,8 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsx --watch src/index.ts",
-    "start": "tsc --noEmit && npm run dev",
-    "build": "tsc && node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "1.0.0",
