@@ -23,7 +23,9 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": [
         "error",
         /* For express error handlers, which explicitely require 4 params */
-        { argsIgnorePattern: "^_" },
+        {
+          argsIgnorePattern: "^_",
+        },
       ],
     },
   },
